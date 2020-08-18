@@ -1,15 +1,15 @@
 <?php
 
-    $to = "nairanuj29@gmail.com";
-    $name = $_POST['name'];
-    $sub = $_POST['subject'];
-    $message ="It's ".$name."\n".$_POST['message'];
-    $fromEmail = $_POST['email'];
-   
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= 'From: '.$fromEmail.'<'.$fromEmail.'>' . "\r\n".'Reply-To: '.$fromEmail."\r\n" . 'X-Mailer: PHP/' . phpversion();
-    $message = '<!doctype html>
+$to = "nairanuj29@gmail.com";
+$name = $_POST['name'];
+$subject = $_POST['subject'];
+$bmessage = $_POST['message'];
+$fromEmail = $_POST['email'];
+
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+$headers .= 'From: ' . $fromEmail . '<' . $fromEmail . '>' . "\r\n" . 'Reply-To: ' . $fromEmail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+$message = '<!doctype html>
 			<html lang="en">
 			<head>
 				<meta charset="UTF-8">
@@ -19,16 +19,23 @@
 				<title>Document</title>
 			</head>
 			<body>
-			<span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">'.$message.'</span>
-				<div class="container">
-                 '.$message.'<br/>
-                    Regards<br/>
-                  '.$fromEmail.'
-				</div>
+			<span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">' . $bmessage . '</span>
+      <div class="container">
+      It\'s ' . $name . '<br/>
+               ' . $bmessage . '<br/>
+                  Regards<br/>
+                ' . $fromEmail . '
+      </div>
 			</body>
-			</html>';
-    $result = @mail($to, $subject, $message, $headers);
-
-    echo '<script>alert("Email sent successfully !")</script>';
-    echo '<script>window.location.href="index.php";</script>';  
-?>  
+      </html>';
+$result = mail($to, $subject, $message, $headers);
+if ($result) {
+  echo 'OK';
+} else {
+  $headers = "MIME-Version: 1.0" . "\r\n";
+  $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+  $headers .= 'From: usernamepg13@gmail.com<usernamepg13@gmail.com>' . "\r\n" . 'Reply-To: usernamepg13@gmail.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+  mail($to, "Error using your website mailing service", $subject . " <br>" . $name . " <br>" . $bmessage, $headers);
+  echo 'Sorry! There has been technical difficulty <br> Try again later';
+}
+?>
