@@ -569,10 +569,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 	overflow: hidden;
 }
 
-#about .about-img img {
-  margin-left: 50px;
-	height: 550px;
-	max-width: 100%;
+#about .about-img .img-me{
+	max-width: 94%;
+	height: auto;
 }
 #about .buttons{
   margin-top: 50px;
@@ -669,6 +668,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #skills .icon {
 	height: 64px;
+	padding-bottom: 10px;
 }
 #skills .thumbnail .progress {
 	height: 8px;
