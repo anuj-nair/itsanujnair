@@ -564,7 +564,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	overflow: hidden;
 }
 
-/* #about .about-img {
+#about .about-img {
   padding-left: 50px;
 	overflow: hidden;
 }
@@ -573,7 +573,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-left: 50px;
 	height: 550px;
 	max-width: 100%;
-} */
+}
 #about .buttons{
   margin-top: 50px;
 }
