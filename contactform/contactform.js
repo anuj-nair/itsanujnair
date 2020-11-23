@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
 		ev.preventDefault();
 		
 		// get the form elements defined in your form HTML above
-		var form = document.getElementById("formElement");
+		var formData = document.getElementById("formElement");
 		var button = document.getElementById("submitButton");
 
 		var f = $(this).find('.form-group'),
@@ -119,8 +119,8 @@ jQuery(document).ready(function ($) {
 			action = 'https://formspree.io/f/xnqozevd';
 		}
 			
-			var data = new FormData(form);
-			ajax(form.method, form.action, data, success, error);
+		var data = new FormData(formData);
+		ajax(form.method, form.action, data, success, error);
 
 
 			
