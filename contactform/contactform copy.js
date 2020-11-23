@@ -3,12 +3,6 @@ jQuery(document).ready(function ($) {
 
 	//Contact
 	$('form.contactForm').submit(function () {
-		ev.preventDefault();
-		
-		// get the form elements defined in your form HTML above
-		var form = document.getElementById("formElement");
-		var button = document.getElementById("submitButton");
-
 		var f = $(this).find('.form-group'),
 			ferror = false,
 			emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
@@ -116,74 +110,24 @@ jQuery(document).ready(function ($) {
 		else var str = $(this).serialize();
 		var action = $(this).attr('action');
 		if (!action) {
-			action = 'https://formspree.io/f/xnqozevd';
+			action = 'contactform/contactform.php';
 		}
-			
-			var data = new FormData(form);
-			ajax(form.method, form.action, data, success, error);
-
-
-			
+		$.ajax({
+			type: 'POST',
+			url: action,
+			data: str,
+			success: function (msg) {
+				if (msg == 'OK') {
+					$('#sendmessage').addClass('show');
+					$('#errormessage').removeClass('show');
+					$('.contactForm').find('input, textarea').val('');
+				} else {
+					$('#sendmessage').removeClass('show');
+					$('#errormessage').addClass('show');
+					$('#errormessage').html(msg);
+				}
+			},
+		});
 		return false;
 	});
 });
-window.addEventListener("DOMContentLoaded", function() {
-
-
-
-    // Success and Error functions for after the form is submitted
-    
-    function success() {
-		$('#sendmessage').addClass('show');
-		$('#errormessage').removeClass('show');
-		$('.contactForm').find('input, textarea').val('');
-	  }
-	
-	function error() {
-		$('#sendmessage').removeClass('show');
-		$('#errormessage').addClass('show');
-		$('#errormessage').html(msg);
-	  }
-
-    // handle the form submission event
-
-  
-  });
-  
-  // helper function for sending an AJAX request
-
-  function ajax(method, url, data, success, error) {
-    var xhr = new XMLHttpRequest();
-    xhr.open(method, url);
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status === 200) {
-        success(xhr.response, xhr.responseType);
-      } else {
-        error(xhr.status, xhr.response, xhr.responseType);
-      }
-    };
-    xhr.send(data);
-  }
-
-
-	
-/* 
-$.ajax({
-	type: 'POST',
-	url: action,
-	data: str,
-	success: function (msg) {
-		if (msg == 'OK') {
-			$('#sendmessage').addClass('show');
-			$('#errormessage').removeClass('show');
-			$('.contactForm').find('input, textarea').val('');
-		} else {
-			$('#sendmessage').removeClass('show');
-			$('#errormessage').addClass('show');
-			$('#errormessage').html(msg);
-		}
-	},
-});
-*/
