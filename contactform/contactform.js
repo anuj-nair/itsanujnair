@@ -23,20 +23,22 @@ window.addEventListener("DOMContentLoaded", function () { // get the form elemen
     form.addEventListener("submit", function (ev) {
         ev.preventDefault();
         if (formCheck()) {
+			console.log("Error in Input");
             return false
-        }
-        var data = new FormData(form);
-        ajax(form.method, form.action, data, success, error);
+        }else{
+			var data = new FormData(form);
+    		ajax(form.method, form.action, data, success, error);
+		}
     });
 });
 
 function formCheck() {
-    var f = $(this).find('.form-group'),
+    var formName = "form.contactForm";
+    var f = $(formName).find('.form-group'),
         ferror = false,
         emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
 
     f.children('input').each(function () { // run all inputs
-
         var i = $(this); // current input
         var rule = i.attr('data-rule');
 
@@ -124,13 +126,12 @@ function formCheck() {
                     }
                     i.next('.validation').html(ierror ? i.attr('data-msg') != undefined ? i.attr('data-msg') : 'wrong Input' : '').show('blind');
             }
-        });
+		});
+		
         if(ferror) 
             return true;
-        
 
-
-        var str = $(this).serialize();
+        var str = $(formName).serialize();
         return false;
     }
 
