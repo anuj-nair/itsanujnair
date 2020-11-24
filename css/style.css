@@ -553,10 +553,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Section with background
 --------------------------------*/
-.section-bg {
+.sectionbg1 {
 	background: #eff5f5;
 }
-
+.sectionbg2{
+	background: #fff;
+}
 /* About Me Section
 --------------------------------*/
 #about {
@@ -631,7 +633,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* Product Featuress Section
 --------------------------------*/
 #skills {
-	background: #fff;
 	padding: 60px 0 0 0;
 	overflow: hidden;
 }
@@ -1092,7 +1093,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* Gallery Section
 --------------------------------*/
 #gallery {
-	background: #fff;
 	padding: 60px 0 0 0;
 	overflow: hidden;
 }
@@ -1267,7 +1267,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------------------------------------*/
 #footer {
 	opacity: 0.7;
-	background: #fff;
+	/* background: #fff; */
 	box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
 	padding: 30px 0;
 	color: #333;
